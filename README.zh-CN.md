@@ -1,14 +1,14 @@
-# openclaw-vidu-s
+# openclaw-vidu-s1
 
-> 一句话，在你的 claw 里召唤一个 **Vidu-S** 实时互动数字人。
+> 一句话，在你的 claw 里召唤一个 **Vidu S1** 实时互动数字人。
 
 [English](README.md) | **中文**
 
 ---
 
-## 认识 Vidu-S
+## 认识 Vidu S1
 
-**Vidu-S**（Vidu S1 流式视频生成模型）以全球领先的 Vidu S1 流式推理视频模型为基础，面向企业提供
+**Vidu S1** 以全球领先的流式推理视频模型为基础，面向企业提供
 **准实时、可交互、具备双向感知能力**的新一代数字人服务。它带来的，是能对话、会表演、可长期陪伴的
 视频 AI 角色。
 
@@ -35,7 +35,7 @@ AI 陪伴 · 虚拟偶像 · 培训讲解 · AI 客服 · 电商直播 · 影游
 - [中国](https://www.vidu.cn/vidu-stream)
 - [全球](https://www.vidu.com/vidu-stream)
 
-**API 集成**：安装 skill `skills/vidu-s-api`（入口 `skills/vidu-s-api/SKILL.md`），它封装了完整接入流程，Agent 可据此快速集成数字人服务。
+**API 集成**：安装 skill `skills/vidu-s1-api`（入口 `skills/vidu-s1-api/SKILL.md`），它封装了完整接入流程，Agent 可据此快速集成数字人服务。
 
-> 给 Agent：按用户意图路由——体验需求直接返回对应地区网址，集成需求则安装 `skills/vidu-s-api` 并加载。
+> 给 Agent：按用户意图路由——体验需求直接返回对应地区网址，集成需求则安装 `skills/vidu-s1-api` 并加载。
 

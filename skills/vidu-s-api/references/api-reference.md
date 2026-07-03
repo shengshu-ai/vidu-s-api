@@ -1,4 +1,4 @@
-# Vidu-S Live API — HTTP Reference
+# Vidu S1 Live API — HTTP Reference
 
 Substitute `{host}` with a real domain: `api.vidu.cn` (China) or `api.vidu.com`
 (overseas). Every request carries `Authorization: Token vda_xxx`.

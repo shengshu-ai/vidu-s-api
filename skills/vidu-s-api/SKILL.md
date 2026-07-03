@@ -1,7 +1,7 @@
 ---
-name: vidu-s-api
+name: vidu-s1-api
 description: >-
-  Integrate the Vidu-S / Vidu S1 real-time interactive digital-human (数字人)
+  Integrate the Vidu S1 real-time interactive digital-human (数字人)
   streaming video API. Use this whenever the user is building against Vidu's
   live avatar service — creating a live session, joining the Aliyun RTC channel,
   driving the control WebSocket, handling NOT_READY retries, heartbeats, hangups,
@@ -10,9 +10,9 @@ description: >-
   Encodes the non-obvious protocol gotchas that the public doc gets wrong.
 ---
 
-# Vidu-S Live API Integration
+# Vidu S1 Live API Integration
 
-Vidu-S (product name **Vidu S1**) is a streaming, real-time, two-way interactive
+Vidu S1 is a streaming, real-time, two-way interactive
 digital-human video service. You create a "live session", the media flows over an
 **Aliyun RTC** channel (not HTTP), and a persistent **WebSocket** carries control
 signaling (start / hangup). This skill encodes the end-to-end flow and — more

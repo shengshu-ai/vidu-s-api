@@ -1,4 +1,4 @@
-# Vidu-S Live API — System Voices
+# Vidu S1 Live API — System Voices
 
 Pass one of these ids as `avatar.voice` when creating a session. Default is `Tina`.
 These are **system** voices — `GET /live/v1/voices` does NOT return them (it only

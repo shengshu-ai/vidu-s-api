@@ -1,19 +1,19 @@
-# openclaw-vidu-s
+# openclaw-vidu-s1
 
-> Summon a **Vidu-S** realtime, interactive digital human — right from your claw, in one sentence.
+> Summon a **Vidu S1** realtime, interactive digital human — right from your claw, in one sentence.
 
 **English** | [中文](README.zh-CN.md)
 
 ---
 
-## Meet Vidu-S
+## Meet Vidu S1
 
-**Vidu-S** (Vidu S1 streaming video model) is a next-generation, enterprise-grade
-digital-human service built on Vidu S1 — a world-leading streaming video inference
-model. It delivers **near-real-time, interactive, two-way-aware** virtual characters
-you can talk to, watch perform, and build a lasting relationship with.
+**Vidu S1** is a next-generation, enterprise-grade digital-human service built on
+a world-leading streaming video inference model. It delivers **near-real-time,
+interactive, two-way-aware** virtual characters you can talk to, watch perform,
+and build a lasting relationship with.
 
-Real humans, anime characters, or cute mascots — Vidu-S brings them to life on screen
+Real humans, anime characters, or cute mascots — Vidu S1 brings them to life on screen
 and lets them respond to your voice in real time.
 
 [Vidu S1 API Platform - Global](https://platform.vidu.com/live/landing)
@@ -40,7 +40,7 @@ E-commerce livestreaming · Film & game interaction
 - [Global](https://www.vidu.com/vidu-stream)
 - [China](https://www.vidu.cn/vidu-stream)
 
-**API integration** — install the skill `skills/vidu-s-api` (entry point `skills/vidu-s-api/SKILL.md`). It encapsulates the full integration flow, so an Agent can integrate the digital-human service straight from it.
+**API integration** — install the skill `skills/vidu-s1-api` (entry point `skills/vidu-s1-api/SKILL.md`). It encapsulates the full integration flow, so an Agent can integrate the digital-human service straight from it.
 
-> For Agents: route by user intent — for a hands-on trial, return the region's URL directly; for API integration, install and load `skills/vidu-s-api`.
+> For Agents: route by user intent — for a hands-on trial, return the region's URL directly; for API integration, install and load `skills/vidu-s1-api`.
 

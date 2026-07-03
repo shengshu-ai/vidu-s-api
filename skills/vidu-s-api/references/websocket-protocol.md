@@ -1,4 +1,4 @@
-# Vidu-S Live API — WebSocket Control Protocol
+# Vidu S1 Live API — WebSocket Control Protocol
 
 The WebSocket is the persistent control channel: it announces readiness and carries
 hangup signaling. Media does NOT flow here — that's the Aliyun RTC channel.
