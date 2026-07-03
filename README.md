@@ -1,4 +1,4 @@
-# openclaw-vidu-s1
+# vidu-s1-api
 
 > Summon a **Vidu S1** realtime, interactive digital human — right from your claw, in one sentence.
 
@@ -27,6 +27,8 @@ and lets them respond to your voice in real time.
 - **Interaction with warmth** — customizable personas and looks (real people, 2D characters, pets) plus short-term memory for a personal, human touch.
 - **Multimodal** — voice, text, and video interaction; perceives the user's appearance and emotion.
 - **Stunning quality** — high-resolution, real-time generative video.
+
+
 
 ## Where it shines
 
