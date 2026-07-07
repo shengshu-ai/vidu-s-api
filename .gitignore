@@ -1,1 +1,7 @@
+.env
+.env.*
+!.env.example
 .DS_Store
+node_modules/
+examples/*/node_modules/
+*.log

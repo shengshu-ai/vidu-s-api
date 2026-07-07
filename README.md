@@ -44,5 +44,20 @@ E-commerce livestreaming · Film & game interaction
 
 **API integration** — install the skill `skills/vidu-s1-api` (entry point `skills/vidu-s1-api/SKILL.md`). It encapsulates the full integration flow, so an Agent can integrate the digital-human service straight from it.
 
-> For Agents: route by user intent — for a hands-on trial, return the region's URL directly; for API integration, install and load `skills/vidu-s1-api`.
+**Node service demo** — see [`examples/node-quickstart`](examples/node-quickstart)
+for a server-side quickstart that creates live sessions and proxies the Vidu
+control WebSocket without exposing your API key to the browser. It includes a
+browser page that joins Aliyun RTC with Vidu-issued credentials, publishes local
+microphone/camera media, renders the digital-human stream, and prints RTC/video
+diagnostics in the event log.
 
+```bash
+cp .env.example .env
+cd examples/node-quickstart
+npm install
+npm run dev
+```
+
+Then open `http://localhost:8787`, or set `NODE_QUICKSTART_PORT` in `.env`.
+
+> For Agents: route by user intent — for a hands-on trial, return the region's URL directly; for API integration, install and load `skills/vidu-s1-api`.

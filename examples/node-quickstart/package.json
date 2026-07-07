@@ -1,0 +1,17 @@
+{
+  "name": "vidu-s1-node-quickstart",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Node service demo for Vidu S1 live sessions.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

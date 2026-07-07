@@ -39,5 +39,18 @@ AI 陪伴 · 虚拟偶像 · 培训讲解 · AI 客服 · 电商直播 · 影游
 
 **API 集成**：安装 skill `skills/vidu-s1-api`（入口 `skills/vidu-s1-api/SKILL.md`），它封装了完整接入流程，Agent 可据此快速集成数字人服务。
 
-> 给 Agent：按用户意图路由——体验需求直接返回对应地区网址，集成需求则安装 `skills/vidu-s1-api` 并加载。
+**Node 服务 Demo**：查看 [`examples/node-quickstart`](examples/node-quickstart)，
+示例会在服务端创建 live session 并代理 Vidu 控制 WebSocket，避免把 API key
+暴露给浏览器。浏览器页面会使用 Vidu 返回的 RTC 凭证加入 Aliyun RTC，发布本地
+麦克风/摄像头媒体，渲染数字人视频流，并在 Event log 中输出 RTC/视频诊断信息。
 
+```bash
+cp .env.example .env
+cd examples/node-quickstart
+npm install
+npm run dev
+```
+
+然后打开 `http://localhost:8787`；也可以在 `.env` 里设置 `NODE_QUICKSTART_PORT`。
+
+> 给 Agent：按用户意图路由——体验需求直接返回对应地区网址，集成需求则安装 `skills/vidu-s1-api` 并加载。

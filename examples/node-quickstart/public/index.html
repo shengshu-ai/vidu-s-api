@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vidu S1 Node Quickstart</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Node service demo</p>
+          <h1>Vidu S1 live session</h1>
+        </div>
+        <div class="status-pill" id="apiKeyState">Checking config</div>
+      </header>
+
+      <section class="workspace">
+        <form class="panel form-panel" id="createForm">
+          <div class="panel-head">
+            <h2>Create session</h2>
+            <span id="hostLabel">api.vidu.cn</span>
+          </div>
+
+          <label>
+            Mode
+            <select name="call_mode">
+              <option value="video">Video</option>
+              <option value="audio">Audio</option>
+            </select>
+          </label>
+
+          <label>
+            Avatar image URI
+            <input name="image_uri" type="url" placeholder="https://example.com/avatar.png" required>
+          </label>
+
+          <label>
+            Persona
+            <textarea name="persona" rows="5" required></textarea>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              Name
+              <input name="name" type="text" maxlength="20">
+            </label>
+            <label>
+              Voice
+              <input name="voice" type="text" placeholder="Tina">
+            </label>
+          </div>
+
+          <button class="primary" id="callAction" type="submit">Start live call</button>
+        </form>
+
+        <section class="panel session-panel">
+          <div class="panel-head">
+            <h2>Session</h2>
+          </div>
+
+          <div class="media-grid">
+            <figure class="media-tile media-tile-main">
+              <video id="remoteVideo" autoplay playsinline controls></video>
+              <figcaption>Digital human</figcaption>
+            </figure>
+            <figure class="media-tile media-tile-local">
+              <video id="localVideo" autoplay playsinline muted></video>
+              <figcaption>Local preview</figcaption>
+            </figure>
+          </div>
+
+          <h3>RTC join credentials</h3>
+          <pre id="rtcOutput">{}</pre>
+
+          <h3>Event log</h3>
+          <ul id="eventLog" class="event-log"></ul>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://g.alicdn.com/apsara-media-box/imp-web-rtc/7.1.9/aliyun-rtc-sdk.js"></script>
+    <script src="/app.js?v=video-stream-logs-9" type="module"></script>
+  </body>
+</html>
