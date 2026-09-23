@@ -1,0 +1,22 @@
+identity:
+  name: list_voices
+  author: shengshu-ai
+  label:
+    en_US: List Custom Voices
+    zh_Hans: 查询自定义音色
+description:
+  human:
+    en_US: List custom cloned voices available to the Vidu account.
+    zh_Hans: 查询当前 Vidu 账号可用的自定义克隆音色。
+  llm: List custom cloned voices. An empty result does not mean system Avatar Realtime voices are unavailable.
+parameters: []
+output_schema:
+  type: object
+  properties:
+    voices:
+      type: array
+      items:
+        type: object
+extra:
+  python:
+    source: tools/list_voices.py

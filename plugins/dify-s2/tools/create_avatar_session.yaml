@@ -1,0 +1,117 @@
+identity:
+  name: create_avatar_session
+  author: shengshu-ai
+  label:
+    en_US: Create Avatar Session
+    zh_Hans: 创建 Avatar 会话
+description:
+  human:
+    en_US: Create a Vidu S2 Avatar real-time session and return RTC credentials.
+    zh_Hans: 创建 Vidu S2 Avatar 实时会话并返回 RTC 凭证。
+  llm: Create a Vidu S2 Avatar real-time session from a persona and character image. The returned RTC fields are sensitive and intended for a trusted external client.
+parameters:
+  - name: persona
+    type: string
+    required: true
+    label:
+      en_US: Persona
+      zh_Hans: 人设
+    human_description:
+      en_US: Character persona, up to 50,000 characters.
+      zh_Hans: 角色人设，最多 50,000 个字符。
+    llm_description: Detailed persona for the interactive character.
+    form: llm
+  - name: image_uri
+    type: string
+    required: true
+    label:
+      en_US: Character Image URI
+      zh_Hans: 角色图片 URI
+    human_description:
+      en_US: Public image URL or supported base64 data URI containing one person.
+      zh_Hans: 包含单人的公网图片 URL 或受支持的 base64 data URI。
+    llm_description: Character image URL or data URI.
+    form: llm
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: Character Name
+      zh_Hans: 角色名称
+    human_description:
+      en_US: Optional character display name.
+      zh_Hans: 可选的角色展示名称。
+    llm_description: Optional display name.
+    form: llm
+  - name: voice
+    type: string
+    required: false
+    label:
+      en_US: Voice
+      zh_Hans: 音色
+    human_description:
+      en_US: Optional Avatar Realtime voice name. Leave empty for the API default.
+      zh_Hans: 可选的 Avatar Realtime 音色名称，留空使用 API 默认值。
+    llm_description: Optional Avatar Realtime voice name.
+    form: llm
+  - name: call_mode
+    type: select
+    required: true
+    default: video
+    label:
+      en_US: Call Mode
+      zh_Hans: 通话模式
+    options:
+      - value: video
+        label:
+          en_US: Video
+          zh_Hans: 视频
+      - value: audio
+        label:
+          en_US: Audio
+          zh_Hans: 音频
+    human_description:
+      en_US: Video publishes microphone and camera; audio publishes microphone only.
+      zh_Hans: video 发布麦克风和摄像头；audio 仅发布麦克风。
+    llm_description: Must be video or audio.
+    form: form
+  - name: persona_enhance
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Enhance Persona
+      zh_Hans: 优化人设
+    human_description:
+      en_US: Ask Vidu to enhance the persona prompt when supported.
+      zh_Hans: 在支持时让 Vidu 优化人设提示词。
+    llm_description: Whether to enhance the persona prompt.
+    form: form
+output_schema:
+  type: object
+  properties:
+    live_id:
+      type: string
+    status:
+      type: string
+    live_duration:
+      type: integer
+    call_mode:
+      type: string
+    rtc:
+      type: object
+      description: Sensitive, short-lived RTC join credentials.
+      properties:
+        app_id:
+          type: string
+        channel_id:
+          type: string
+        user_id:
+          type: string
+        token:
+          type: string
+        token_expire_at:
+          type: string
+extra:
+  python:
+    source: tools/create_avatar_session.py

@@ -1,0 +1,84 @@
+identity:
+  name: create_editing_session
+  author: shengshu-ai
+  label:
+    en_US: Create Editing Session
+    zh_Hans: 创建 Editing 会话
+description:
+  human:
+    en_US: Create a Vidu S2 Editing real-time session and return RTC and render identities.
+    zh_Hans: 创建 Vidu S2 Editing 实时会话并返回 RTC 与渲染身份信息。
+  llm: Create a Vidu S2 Editing session using a reference image and editing scenario. Returned RTC and client_secret values are sensitive and intended for a trusted external client or backend.
+parameters:
+  - name: image_url
+    type: string
+    required: true
+    label:
+      en_US: Reference Image
+      zh_Hans: 参考图
+    human_description:
+      en_US: HTTP(S) URL, supported data URI, or Vidu upload URI for the reference image.
+      zh_Hans: 参考图的 HTTP(S) URL、受支持的 data URI 或 Vidu 上传 URI。
+    llm_description: Reference image used for real-time editing.
+    form: llm
+  - name: editing_type
+    type: select
+    required: true
+    default: style_transfer
+    label:
+      en_US: Editing Type
+      zh_Hans: 编辑类型
+    options:
+      - value: style_transfer
+        label:
+          en_US: Style Transfer
+          zh_Hans: 风格迁移
+      - value: virtual_tryon
+        label:
+          en_US: Virtual Try-on
+          zh_Hans: 虚拟试穿
+      - value: subject_replacement
+        label:
+          en_US: Subject Replacement
+          zh_Hans: 主体替换
+      - value: background_replacement
+        label:
+          en_US: Background Replacement
+          zh_Hans: 背景替换
+    human_description:
+      en_US: Select how the reference image changes the camera stream.
+      zh_Hans: 选择参考图如何改变摄像头画面。
+    llm_description: One of style_transfer, virtual_tryon, subject_replacement, or background_replacement.
+    form: form
+output_schema:
+  type: object
+  properties:
+    live_id:
+      type: string
+    status:
+      type: string
+    live_duration:
+      type: integer
+    render_uid:
+      type: string
+      description: RTC user whose camera stream is the Editing result.
+    client_secret:
+      type: string
+      description: Optional sensitive credential required by some Editing control WebSocket sessions.
+    rtc:
+      type: object
+      description: Sensitive, short-lived RTC join credentials.
+      properties:
+        app_id:
+          type: string
+        channel_id:
+          type: string
+        user_id:
+          type: string
+        token:
+          type: string
+        token_expire_at:
+          type: string
+extra:
+  python:
+    source: tools/create_editing_session.py

@@ -1,0 +1,49 @@
+identity:
+  name: get_live_session
+  author: shengshu-ai
+  label:
+    en_US: Get Live Session
+    zh_Hans: 查询实时会话
+description:
+  human:
+    en_US: Query a Vidu S2 session status, timing, trace, and billing fields.
+    zh_Hans: 查询 Vidu S2 会话状态、时间、追踪和计费字段。
+  llm: Query a Vidu S2 Avatar or Editing session by live_id.
+parameters:
+  - name: live_id
+    type: string
+    required: true
+    label:
+      en_US: Live ID
+      zh_Hans: 会话 ID
+    human_description:
+      en_US: Session ID returned by a Vidu S2 creation tool.
+      zh_Hans: Vidu S2 创建工具返回的会话 ID。
+    llm_description: Vidu live session ID.
+    form: llm
+output_schema:
+  type: object
+  properties:
+    live_id:
+      type: string
+    status:
+      type: string
+    live_duration:
+      type: integer
+    call_mode:
+      type: string
+    billed_seconds:
+      type: integer
+    credits_cost:
+      type: integer
+    created_at:
+      type: string
+    started_at:
+      type: string
+    ended_at:
+      type: string
+    trace_id:
+      type: string
+extra:
+  python:
+    source: tools/get_live_session.py

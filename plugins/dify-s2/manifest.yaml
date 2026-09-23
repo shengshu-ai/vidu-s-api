@@ -1,0 +1,30 @@
+version: 0.0.2
+type: plugin
+author: shengshu-ai
+name: vidu_s2
+label:
+  en_US: Vidu S2
+  zh_Hans: Vidu S2
+description:
+  en_US: Create and inspect Vidu S2 Avatar and Editing real-time sessions.
+  zh_Hans: 创建和查询 Vidu S2 Avatar 与 Editing 实时会话。
+icon: icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/vidu_s2.yaml
+meta:
+  version: 0.0.2
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+privacy: PRIVACY.md
+created_at: 2026-09-16T00:00:00+08:00
