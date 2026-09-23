@@ -131,7 +131,14 @@ For Marketplace distribution, submit the packaged file to
 `langgenius/dify-plugins` and keep `README.md`, `PRIVACY.md`, `_assets/`, and
 `manifest.yaml` in the plugin root.
 
+## Version 0.0.2
+
+Credential validation and API failures now suppress sensitive upstream exception
+chains in Dify logs, including timeout errors. Malformed API keys are rejected
+before an HTTP request. The package excludes maintainer notes and local artifacts.
+Existing S1 tools, parameters, and Workflow outputs remain compatible.
+
 ## Source and Support
 
-- Source: https://github.com/shengshu-ai/vidu-s1-api
-- Bug reports and support: https://github.com/shengshu-ai/vidu-s1-api/issues
+- Source: https://github.com/shengshu-ai/vidu-s-api
+- Bug reports and support: https://github.com/shengshu-ai/vidu-s-api/issues

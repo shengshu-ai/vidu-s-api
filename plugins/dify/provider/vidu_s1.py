@@ -18,16 +18,16 @@ class ViduS1Provider(ToolProvider):
             )
             client.list_voices(timeout=10)
         except ValueError as exc:
-            raise ToolProviderCredentialValidationError(str(exc)) from exc
-        except requests.Timeout as exc:
+            raise ToolProviderCredentialValidationError(str(exc)) from None
+        except requests.Timeout:
             raise ToolProviderCredentialValidationError(
                 "Vidu credential validation timed out."
-            ) from exc
-        except (ViduApiError, requests.RequestException) as exc:
+            ) from None
+        except (ViduApiError, requests.RequestException):
             raise ToolProviderCredentialValidationError(
                 "Vidu rejected the API key or selected region."
-            ) from exc
-        except Exception as exc:
+            ) from None
+        except Exception:
             raise ToolProviderCredentialValidationError(
                 "Vidu credential validation failed."
-            ) from exc
+            ) from None

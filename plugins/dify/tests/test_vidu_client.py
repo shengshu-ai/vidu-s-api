@@ -1,3 +1,5 @@
+import traceback
+
 import pytest
 import requests
 
@@ -23,6 +25,24 @@ def test_rejects_invalid_api_key():
         assert "VIDU API key" in str(exc)
     else:
         raise AssertionError("Expected invalid API key to raise ValueError")
+
+
+@pytest.mark.parametrize(
+    "api_key",
+    [
+        "vda_",
+        "vda_test\nsecret",
+        "vda_test\rsecret",
+        "vda_test\tsecret",
+        "vda_test secret",
+        "vda_test\x00secret",
+        "vda_test\x7fsecret",
+        "vda_test中文",
+    ],
+)
+def test_rejects_credentials_unsafe_for_http_headers(api_key):
+    with pytest.raises(ValueError, match="VIDU API key"):
+        ViduClient(api_key=api_key, region="cn")
 
 
 def test_selects_region_hosts():
@@ -212,5 +232,6 @@ def test_api_error_does_not_expose_credentials_or_response_body(monkeypatch):
         client.list_voices()
 
     assert str(error.value) == "Vidu API request failed."
-    assert "vda_test" not in str(error.value)
-    assert "private upstream body" not in str(error.value)
+    formatted = "".join(traceback.format_exception(error.value))
+    assert "vda_test" not in formatted
+    assert "private upstream body" not in formatted

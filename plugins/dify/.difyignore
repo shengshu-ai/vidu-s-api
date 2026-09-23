@@ -12,3 +12,10 @@ examples/
 pyproject.toml
 uv.lock
 .DS_Store
+PUBLISHING.md
+.env
+.env.*
+.git/
+*.log
+*.pem
+*.difypkg

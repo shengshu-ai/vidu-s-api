@@ -7,9 +7,9 @@ This guide reflects the official Dify documentation and the current
 
 - Author: `shengshu-ai`
 - Plugin: `vidu_s1`
-- Current version: `0.0.1`
+- Current version: `0.0.2`
 - Source directory: `plugins/dify`
-- Package: `vidu_s1-0.0.1.difypkg`
+- Package: `vidu_s1-0.0.2.difypkg`
 
 The `author` and `name` values in `manifest.yaml` and
 `provider/vidu_s1.yaml` must stay identical. For installation from GitHub,
@@ -23,15 +23,15 @@ Install the [Dify Plugin CLI][cli], then run from the repository root:
 
 ```bash
 dify version
-dify plugin package ./plugins/dify -o vidu_s1-0.0.1.difypkg
+dify plugin package ./plugins/dify -o vidu_s1-0.0.2.difypkg
 PYTHONPATH=plugins/dify uv run --project plugins/dify pytest plugins/dify/tests
 ```
 
 Before distributing the package, inspect its contents and checksum:
 
 ```bash
-unzip -l vidu_s1-0.0.1.difypkg
-shasum -a 256 vidu_s1-0.0.1.difypkg
+unzip -l vidu_s1-0.0.2.difypkg
+shasum -a 256 vidu_s1-0.0.2.difypkg
 ```
 
 The package must contain only runtime files. Do not include secrets, `.env`,
@@ -57,8 +57,8 @@ to sign the package and give administrators the public key:
 
 ```bash
 dify signature generate -f shengshu-ai
-dify signature sign vidu_s1-0.0.1.difypkg -p shengshu-ai.private.pem
-dify signature verify vidu_s1-0.0.1.signed.difypkg -p shengshu-ai.public.pem
+dify signature sign vidu_s1-0.0.2.difypkg -p shengshu-ai.private.pem
+dify signature verify vidu_s1-0.0.2.signed.difypkg -p shengshu-ai.public.pem
 ```
 
 Never commit the private key. Administrators must explicitly trust the public
@@ -73,25 +73,25 @@ and is not recommended for production. See [signature verification][signing].
 This is the fastest public path and does not require Marketplace review.
 
 1. Push the plugin source to this public repository.
-2. Ensure `manifest.yaml` version is `0.0.1` and package it.
-3. Create tag `v0.0.1`; the tag version must match the manifest version.
+2. Ensure `manifest.yaml` version is `0.0.2` and package it.
+3. Create tag `v0.0.2`; the tag version must match the manifest version.
 4. Create a GitHub Release for the tag and attach
-   `vidu_s1-0.0.1.difypkg` as a release asset.
+   `vidu_s1-0.0.2.difypkg` as a release asset.
 5. Optionally attach or publish its SHA-256 checksum.
 
 With GitHub CLI, after the release commit is on the remote:
 
 ```bash
-git tag v0.0.1
-git push origin v0.0.1
-gh release create v0.0.1 vidu_s1-0.0.1.difypkg \
-  --repo shengshu-ai/vidu-s1-api \
-  --title "Vidu S1 Dify Plugin v0.0.1" \
-  --notes "Initial Dify plugin release."
+git tag v0.0.2
+git push origin v0.0.2
+gh release create v0.0.2 vidu_s1-0.0.2.difypkg \
+  --repo shengshu-ai/vidu-s-api \
+  --title "Vidu S1 Dify Plugin v0.0.2" \
+  --notes "Fix credential error logging and clean the runtime package."
 ```
 
 Users install it through **Plugins > Install Plugin > From GitHub**, enter
-`https://github.com/shengshu-ai/vidu-s1-api`, select `v0.0.1`, and confirm.
+`https://github.com/shengshu-ai/vidu-s-api`, select `v0.0.2`, and confirm.
 Dify discovers versions from GitHub Releases containing a `.difypkg` asset;
 merely committing the package to the repository is not sufficient for this
 installation path. Self-hosted signature rules still apply.
@@ -105,10 +105,10 @@ human review; after merge, Dify publishes the plugin automatically.
 1. Fork `langgenius/dify-plugins` to the `shengshu-ai` account.
 2. Create `shengshu-ai/vidu_s1/` in that fork.
 3. Put exactly one new file in the submission PR:
-   `shengshu-ai/vidu_s1/vidu_s1-0.0.1.difypkg`.
+   `shengshu-ai/vidu_s1/vidu_s1-0.0.2.difypkg`.
 4. Open an English-only PR against `langgenius/dify-plugins:main` using its
    current PR template.
-5. Select **New plugin** and **Medium risk**. Explain that the plugin performs
+5. Select **Version update** and **Medium risk**. Explain that the plugin performs
    a write action (creates a live session) and transmits prompts, avatar
    URL/base64 data, session identifiers, and credentials to the fixed,
    documented Vidu HTTPS API endpoints. State that it does not execute code,
@@ -122,12 +122,12 @@ Suggested fork workflow:
 ```bash
 gh repo fork langgenius/dify-plugins --clone
 cd dify-plugins
-git checkout -b add-vidu-s1-0.0.1
+git checkout -b add-vidu-s1-0.0.2
 mkdir -p shengshu-ai/vidu_s1
-cp ../vidu-s1-api/vidu_s1-0.0.1.difypkg shengshu-ai/vidu_s1/
-git add shengshu-ai/vidu_s1/vidu_s1-0.0.1.difypkg
-git commit -m "add vidu_s1 plugin 0.0.1"
-git push -u origin add-vidu-s1-0.0.1
+cp ../vidu-s-api/vidu_s1-0.0.2.difypkg shengshu-ai/vidu_s1/
+git add shengshu-ai/vidu_s1/vidu_s1-0.0.2.difypkg
+git commit -m "add vidu_s1 plugin 0.0.2"
+git push -u origin add-vidu-s1-0.0.2
 gh pr create --repo langgenius/dify-plugins --base main --fill
 ```
 
@@ -160,19 +160,8 @@ For every update:
 
 Dify also documents an optional [auto-publish GitHub Action][auto-pr] for
 packaging and opening Marketplace update PRs. Use it only after the manual
-`0.0.1` submission succeeds and pin/review third-party Action dependencies
+`0.0.2` submission succeeds and pin/review third-party Action dependencies
 before adding it to this repository.
-
-## Status of the removed release notes
-
-The former `plugins/dify/docs/install-from-github.md` and
-`plugins/dify/docs/marketplace-release.md` are no longer present, so their
-exact text cannot be audited. Their apparent high-level claims remain valid:
-Dify officially supports installation from a GitHub Release and Marketplace
-submission by PR. This file replaces them with the current details that matter:
-the GitHub Release must contain a `.difypkg` asset, Marketplace PRs should add
-exactly one package, self-hosted third-party installs are signature-checked by
-default, and privacy/security disclosures are part of review.
 
 ## Official sources
 

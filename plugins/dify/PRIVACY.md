@@ -47,4 +47,4 @@ token only to the RTC client that joins its session.
 ## Contact
 
 For privacy questions, open an issue at:
-https://github.com/shengshu-ai/vidu-s1-api/issues
+https://github.com/shengshu-ai/vidu-s-api/issues
