@@ -1,3 +1,5 @@
+import traceback
+
 import requests
 from dify_plugin.errors.tool import ToolProviderCredentialValidationError
 
@@ -51,8 +53,9 @@ def test_provider_sanitizes_upstream_validation_errors(monkeypatch):
         )
     except ToolProviderCredentialValidationError as exc:
         assert str(exc) == "Vidu rejected the API key or selected region."
-        assert "vda_test" not in str(exc)
-        assert "private upstream body" not in str(exc)
+        formatted = "".join(traceback.format_exception(exc))
+        assert "vda_test" not in formatted
+        assert "private upstream body" not in formatted
     else:
         raise AssertionError("Expected credential validation to fail")
 
@@ -69,6 +72,6 @@ def test_provider_reports_timeout_without_leaking_credentials(monkeypatch):
         )
     except ToolProviderCredentialValidationError as exc:
         assert str(exc) == "Vidu credential validation timed out."
-        assert "vda_test" not in str(exc)
+        assert "vda_test" not in "".join(traceback.format_exception(exc))
     else:
         raise AssertionError("Expected credential validation to time out")

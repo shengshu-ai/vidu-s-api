@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any, Callable
 from urllib.parse import quote
 
@@ -88,15 +89,13 @@ class ViduClient:
         normalized = region.strip().lower()
         try:
             return cls.REGION_HOSTS[normalized]
-        except KeyError as exc:
-            raise ValueError("region must be 'cn' or 'global'") from exc
+        except KeyError:
+            raise ValueError("region must be 'cn' or 'global'") from None
 
     @staticmethod
     def _normalize_api_key(api_key: str) -> str:
-        key = api_key.strip()
-        if key.startswith("Token vda_"):
-            return key
-        if key.startswith("vda_"):
+        key = api_key.strip().removeprefix("Token ")
+        if re.fullmatch(r"vda_[\x21-\x7e]+", key):
             return f"Token {key}"
         raise ValueError('VIDU API key must look like "vda_xxx" or "Token vda_xxx".')
 
@@ -125,9 +124,9 @@ class ViduClient:
             response.raise_for_status()
             data = response.json()
         except requests.Timeout:
-            raise
-        except (requests.RequestException, ValueError) as exc:
-            raise ViduApiError("Vidu API request failed.") from exc
+            raise requests.Timeout("Vidu API request timed out.") from None
+        except (requests.RequestException, ValueError):
+            raise ViduApiError("Vidu API request failed.") from None
 
         if not isinstance(data, dict):
             raise ViduApiError("Vidu API returned an invalid response.")
