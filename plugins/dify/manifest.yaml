@@ -1,7 +1,9 @@
-version: 0.0.2
+version: 0.0.3
 type: plugin
 author: shengshu-ai
 name: vidu_s1
+repo: https://github.com/shengshu-ai/vidu-s-api
+contact: xiaonan.he@shengshu.ai
 label:
   en_US: Vidu S1
   zh_Hans: Vidu S1

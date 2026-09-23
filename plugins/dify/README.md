@@ -131,6 +131,11 @@ For Marketplace distribution, submit the packaged file to
 `langgenius/dify-plugins` and keep `README.md`, `PRIVACY.md`, `_assets/`, and
 `manifest.yaml` in the plugin root.
 
+## Version 0.0.3
+
+Adds the source repository and maintainer contact metadata required by current
+Marketplace validation. Includes the 0.0.2 fixes below, with no breaking changes.
+
 ## Version 0.0.2
 
 Credential validation and API failures now suppress sensitive upstream exception
